@@ -4,9 +4,10 @@
   "description": "Trabalho final para a disciplina de desenvolvimento backend",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
