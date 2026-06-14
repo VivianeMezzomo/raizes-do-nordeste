@@ -5,6 +5,10 @@ class UserRepository {
     return UserModel.findOne({ email });
   }
 
+  findById(id) {
+    return UserModel.findById(id);
+  }
+
   async create(userData) {
     return UserModel.create(userData);
   }
