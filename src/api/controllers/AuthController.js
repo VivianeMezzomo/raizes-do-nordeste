@@ -13,6 +13,29 @@ class AuthController {
         });
       }
 
+      if (nome.trim().length < 3) {
+        return res.status(400).json({
+          error: "NOME_INVALIDO",
+          message: "O nome deve possuir pelo menos 3 caracteres.",
+        });
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        return res.status(400).json({
+          error: "EMAIL_INVALIDO",
+          message: "Formato de e-mail inválido.",
+        });
+      }
+
+      if (senha.length < 6) {
+        return res.status(400).json({
+          error: "SENHA_INVALIDA",
+          message: "A senha deve possuir pelo menos 6 caracteres.",
+        });
+      }
+
       const registerUseCase = new RegisterUseCase();
 
       const usuario = await registerUseCase.execute({
