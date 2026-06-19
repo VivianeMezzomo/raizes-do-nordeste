@@ -1,10 +1,11 @@
 class Produto {
-  constructor({ id, nome, descricao, preco, ativo = true }) {
+  constructor({ id, nome, descricao, preco, ativo = true, estoque }) {
     this.id = id;
     this.nome = nome;
     this.descricao = descricao;
     this.preco = preco;
     this.ativo = ativo;
+    this.estoque = estoque;
   }
 
   atualizarPreco(novoPreco) {
@@ -19,3 +20,5 @@ class Produto {
     this.ativo = false;
   }
 }
+
+export default Produto;

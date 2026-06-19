@@ -5,7 +5,7 @@ class UserRepository {
     return UserModel.findOne({ email });
   }
 
-  findById(id) {
+  async findById(id) {
     return UserModel.findById(id);
   }
 
