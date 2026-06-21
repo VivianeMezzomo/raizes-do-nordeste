@@ -1,5 +1,6 @@
 import OrderRepository from "../../../infrastructure/database/repositories/OrderRepository.js";
 import PaymentRepository from "../../../infrastructure/database/repositories/PaymentRepository.js";
+import ProductRepository from "../../../infrastructure/database/repositories/ProductRepository.js";
 
 class RegisterPaymentUseCase {
   async execute({ orderId, result }) {
@@ -7,6 +8,10 @@ class RegisterPaymentUseCase {
 
     if (!order) {
       throw new Error("PEDIDO_NAO_ENCONTRADO");
+    }
+
+    if (order.status === "PAGO" || order.status === "CANCELADO") {
+      throw new Error("PEDIDO_JA_PROCESSADO");
     }
 
     const payment = await PaymentRepository.create({
@@ -18,6 +23,10 @@ class RegisterPaymentUseCase {
     if (result === "APROVADO") {
       await OrderRepository.updateStatus(orderId, "PAGO");
     } else {
+      for (const item of order.items) {
+        await ProductRepository.increaseStock(item.productId, item.quantity);
+      }
+
       await OrderRepository.updateStatus(orderId, "CANCELADO");
     }
 

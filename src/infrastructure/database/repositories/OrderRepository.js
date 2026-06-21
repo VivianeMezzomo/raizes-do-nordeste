@@ -1,4 +1,3 @@
-import PaymentModel from "../models/PaymentModel.js";
 import OrderModel from "../models/OrderModel.js";
 
 class OrderRepository {
@@ -7,11 +6,19 @@ class OrderRepository {
   }
 
   async findById(id) {
-    return OrderModel.findById(id);
+    return OrderModel.findById(id)
+      .populate("userId", "name email")
+      .populate("items.productId", "name");
   }
 
   async updateStatus(id, status) {
-    return PaymentModel.findByIdAndUpdate(id, { status }, { new: true });
+    return OrderModel.findByIdAndUpdate(
+      id,
+      { status },
+      {
+        returnDocument: "after",
+      },
+    );
   }
 }
 

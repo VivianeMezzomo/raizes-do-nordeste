@@ -16,4 +16,17 @@ const router = Router();
  */
 router.post("/create", authMiddleware, OrderController.create);
 
+/**
+ * @swagger
+ * /orders/status:
+ *   post:
+ *     summary: Verifica o status de um pedido
+ *     tags:
+ *       - Order
+ *     responses:
+ *       200:
+ *         description: Status retornado com sucesso
+ */
+router.get("/:id/status", authMiddleware, OrderController.getStatus);
+
 export default router;

@@ -12,6 +12,20 @@ class ProductRepository {
   async findAll() {
     return ProductModel.find();
   }
+
+  async increaseStock(productId, quantity) {
+    return ProductModel.findByIdAndUpdate(
+      productId,
+      {
+        $inc: {
+          stock: quantity,
+        },
+      },
+      {
+        returnDocument: "after",
+      },
+    );
+  }
 }
 
 export default new ProductRepository();

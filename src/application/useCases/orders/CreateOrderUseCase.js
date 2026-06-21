@@ -7,8 +7,6 @@ class CreateOrderUseCase {
 
     const orderItems = [];
 
-    console.log("items", items);
-
     for (const item of items) {
       const product = await ProductRepository.findById(item.productId);
 
