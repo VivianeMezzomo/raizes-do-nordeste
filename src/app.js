@@ -3,6 +3,7 @@ import authRoutes from "./api/routes/authRoute.js";
 import userRoutes from "./api/routes/userRoute.js";
 import productRoutes from "./api/routes/productsRoute.js";
 import orderRoutes from "./api/routes/orderRoute.js";
+import paymentRoutes from "./api/routes/paymentRoute.js";
 
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./api/swagger/swagger.js";
@@ -14,6 +15,7 @@ app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
+app.use("/payments", paymentRoutes);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
