@@ -8,25 +8,25 @@ const orderSchema = new mongoose.Schema(
       required: true,
     },
 
-    canalPedido: {
+    orderChannel: {
       type: String,
       required: true,
     },
 
-    itens: [
+    items: [
       {
-        produtoId: {
+        productId: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Product",
         },
 
-        quantidade: Number,
+        quantity: Number,
 
-        precoUnitario: Number,
+        UnitPrice: Number,
       },
     ],
 
-    valorTotal: Number,
+    TotalValue: Number,
 
     status: {
       type: String,

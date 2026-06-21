@@ -4,16 +4,16 @@ import FindAllProductsUseCase from "../../application/useCases/products/FindAllP
 class ProductController {
   async create(req, res) {
     try {
-      const { nome, preco, descricao, ativo, estoque } = req.body;
+      const { name, price, description, active, stock } = req.body;
 
       const useCase = new CreateProductUseCase();
 
       const produto = await useCase.execute({
-        nome,
-        preco,
-        descricao,
-        ativo,
-        estoque,
+        name,
+        price,
+        description,
+        active,
+        stock,
       });
 
       return res.status(201).json(produto);

@@ -1,15 +1,15 @@
-import AtualizarPerfilUseCase from "../../application/useCases/users/AtualizarPerfilUseCase.js";
+import UpdateRoleUseCase from "../../application/useCases/users/UpdateRoleUseCase.js";
 
 class UserController {
-  async atualizarPerfil(req, res) {
+  async UpdateRole(req, res) {
     const { id } = req.params;
-    const { perfil } = req.body;
+    const { role } = req.body;
 
-    const useCase = new AtualizarPerfilUseCase();
+    const useCase = new UpdateRoleUseCase();
 
-    const usuario = await useCase.execute(id, perfil);
+    const user = await useCase.execute(id, role);
 
-    return res.json(usuario);
+    return res.json(user);
   }
 }
 

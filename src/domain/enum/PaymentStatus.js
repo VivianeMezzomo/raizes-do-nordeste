@@ -1,7 +1,7 @@
-const StatusPagamento = {
+const PaymentStatus = {
   PENDENTE: "PENDENTE",
   APROVADO: "APROVADO",
   RECUSADO: "RECUSADO",
 };
 
-export default StatusPagamento;
+export default PaymentStatus;

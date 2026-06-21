@@ -6,7 +6,7 @@ import UserController from "../controllers/UserController.js";
 const router = Router();
 /**
  * @swagger
- * /users/:id/perfil:
+ * /users/:id/role:
  *   patch:
  *     summary: Atualiza o perfil de um usuário já existente
  *     tags:
@@ -29,10 +29,10 @@ const router = Router();
  *         description: Registro realizado com sucesso
  */
 router.patch(
-  "/:id/perfil",
+  "/:id/role",
   authMiddleware,
   authorize("ADMIN"),
-  UserController.atualizarPerfil,
+  UserController.UpdateRole,
 );
 
 export default router;

@@ -5,13 +5,13 @@ class OrderController {
     try {
       const useCase = new CreateOrderUseCase();
 
-      const pedido = await useCase.execute({
+      const order = await useCase.execute({
         usuarioId: req.user.id,
-        canalPedido: req.body.canalPedido,
+        orderChannel: req.body.orderChannel,
         itens: req.body.itens,
       });
 
-      return res.status(201).json(pedido);
+      return res.status(201).json(order);
     } catch (error) {
       return res.status(400).json({
         error: error.message,

@@ -5,12 +5,12 @@ class PaymentController {
     try {
       const useCase = new RegisterPaymentUseCase();
 
-      const pagamento = await useCase.execute({
-        pedidoId: req.body.pedidoId,
-        resultado: req.body.resultado,
+      const payment = await useCase.execute({
+        orderId: req.body.orderId,
+        result: req.body.result,
       });
 
-      return res.status(201).json(pagamento);
+      return res.status(201).json(payment);
     } catch (error) {
       return res.status(400).json({
         error: error.message,

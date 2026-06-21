@@ -1,4 +1,4 @@
-const PedidoStatus = Object({
+const OrderStatus = Object({
   AGUARDANDO_PAGAMENTO: "AGUARDANDO PAGAMENTO",
   PENDENTE: "PENDENTE",
   COZINHA: "COZINHA",
@@ -7,4 +7,4 @@ const PedidoStatus = Object({
   CANCELADO: "CANCELADO",
 });
 
-export default PedidoStatus;
+export default OrderStatus;

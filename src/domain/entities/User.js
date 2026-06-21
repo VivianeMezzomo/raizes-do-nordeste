@@ -1,32 +1,30 @@
-import { PerfilUsuario } from "../enum/PerfilUsuario";
+import { UserRole } from "../enum/UserRole.js";
 
 class User {
-  constructor({ id, nome, email, senha, perfil = PerfilUsuario.CLIENTE }) {
+  constructor({ id, name, email, password, role = UserRole.CLIENTE }) {
     this.id = id;
-    this.nome = nome;
+    this.name = name;
     this.email = email;
-    this.senha = senha;
-    this.perfil = perfil;
+    this.password = password;
+    this.role = role;
   }
 
   isAdmin() {
-    return this.perfil === PerfilUsuario.ADMIN;
+    return this.role === UserRole.ADMIN;
   }
 
   isGerente() {
-    return this.perfil === PerfilUsuario.GERENTE;
+    return this.role === UserRole.GERENTE;
   }
 
   isCozinha() {
-    return this.perfil === PerfilUsuario.COZINHA;
+    return this.role === UserRole.COZINHA;
   }
 
-  podeAlterarStatusPedido() {
-    return [
-      PerfilUsuario.COZINHA,
-      PerfilUsuario.GERENTE,
-      PerfilUsuario.ADMIN,
-    ].includes(this.perfil);
+  canUpdateOrderStatus() {
+    return [UserRole.COZINHA, UserRole.GERENTE, UserRole.ADMIN].includes(
+      this.role,
+    );
   }
 }
 

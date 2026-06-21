@@ -1,4 +1,4 @@
-const PerfilUsuario = Object({
+const UserRole = Object({
   CLIENTE: "CLIENTE",
   ATENDENTE: "ATENDENTE",
   COZINHA: "COZINHA",
@@ -6,4 +6,4 @@ const PerfilUsuario = Object({
   ADMIN: "ADMIN",
 });
 
-export default PerfilUsuario;
+export default UserRole;

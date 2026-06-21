@@ -2,12 +2,12 @@ import ProductRepository from "../../../infrastructure/database/repositories/Pro
 import OrderRepository from "../../../infrastructure/database/repositories/OrderRepository.js";
 
 class CreateOrderUseCase {
-  async execute({ usuarioId, canalPedido, itens }) {
+  async execute({ userId, orderChannel, items }) {
     let valorTotal = 0;
 
-    const itensPedido = [];
+    const orderItems = [];
 
-    for (const item of itens) {
+    for (const item of items) {
       const produto = await ProductRepository.findById(item.produtoId);
 
       if (!produto) {
@@ -20,7 +20,7 @@ class CreateOrderUseCase {
 
       valorTotal += produto.preco * item.quantidade;
 
-      itensPedido.push({
+      orderItems.push({
         produtoId: produto._id,
         quantidade: item.quantidade,
         precoUnitario: produto.preco,
@@ -32,9 +32,9 @@ class CreateOrderUseCase {
     }
 
     return OrderRepository.create({
-      usuarioId,
-      canalPedido,
-      itens: itensPedido,
+      userId,
+      orderChannel,
+      items: orderItems,
       valorTotal,
       status: "PENDENTE",
     });

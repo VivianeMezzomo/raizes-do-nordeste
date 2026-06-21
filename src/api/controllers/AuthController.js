@@ -4,16 +4,16 @@ import RegisterUseCase from "../../application/useCases/auth/RegisterUseCase.js"
 class AuthController {
   async register(req, res) {
     try {
-      const { nome, email, senha } = req.body;
+      const { name, email, password } = req.body;
 
-      if (!nome || !email || !senha) {
+      if (!name || !email || !password) {
         return res.status(400).json({
           error: "DADOS_INVALIDOS",
           message: "Nome, email e senha são obrigatórios.",
         });
       }
 
-      if (nome.trim().length < 3) {
+      if (name.trim().length < 3) {
         return res.status(400).json({
           error: "NOME_INVALIDO",
           message: "O nome deve possuir pelo menos 3 caracteres.",
@@ -29,7 +29,7 @@ class AuthController {
         });
       }
 
-      if (senha.length < 6) {
+      if (password.length < 6) {
         return res.status(400).json({
           error: "SENHA_INVALIDA",
           message: "A senha deve possuir pelo menos 6 caracteres.",
@@ -39,9 +39,9 @@ class AuthController {
       const registerUseCase = new RegisterUseCase();
 
       const usuario = await registerUseCase.execute({
-        nome,
+        name,
         email,
-        senha,
+        password,
       });
 
       return res.status(201).json(usuario);
@@ -62,9 +62,9 @@ class AuthController {
 
   async login(req, res) {
     try {
-      const { email, senha } = req.body;
+      const { email, password } = req.body;
 
-      if (!email || !senha) {
+      if (!email || !password) {
         return res.status(400).json({
           error: "DADOS_INVALIDOS",
           message: "Email e senha são obrigatórios.",
@@ -73,7 +73,7 @@ class AuthController {
 
       const loginUseCase = new LoginUseCase();
 
-      const resultado = await loginUseCase.execute(email, senha);
+      const resultado = await loginUseCase.execute(email, password);
 
       return res.status(200).json(resultado);
     } catch (error) {

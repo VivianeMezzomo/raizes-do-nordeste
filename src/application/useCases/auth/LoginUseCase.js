@@ -33,9 +33,9 @@ class LoginUseCase {
       expiresIn: 3600,
       user: {
         id: user._id,
-        nome: user.nome,
+        name: user.name,
         email: user.email,
-        perfil: user.perfil,
+        role: user.role,
       },
     };
   }

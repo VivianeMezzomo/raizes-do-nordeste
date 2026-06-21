@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import PerfilUsuario from "../../../domain/enum/PerfilUsuario.js";
+import UserRole from "../../../domain/enum/UserRole.js";
 
 const userSchema = new mongoose.Schema(
   {
-    nome: {
+    name: {
       type: String,
       required: true,
     },
@@ -12,14 +12,14 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    senhaHash: {
+    passwordHash: {
       type: String,
       required: true,
     },
-    perfil: {
+    role: {
       type: String,
-      enum: PerfilUsuario,
-      default: PerfilUsuario.CLIENTE,
+      enum: UserRole,
+      default: UserRole.CLIENTE,
     },
   },
   {

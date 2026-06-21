@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 
 const paymentSchema = new mongoose.Schema(
   {
-    pedidoId: {
+    orderId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Order",
       required: true,
     },
 
-    valor: {
+    price: {
       type: Number,
       required: true,
     },

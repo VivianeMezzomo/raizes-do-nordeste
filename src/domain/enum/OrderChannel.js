@@ -1,4 +1,4 @@
-const CanalPedido = Object({
+const OrderChannel = Object({
   APP: "APP",
   TOTEM: "TOTEM",
   BALCAO: "BALCAO",
@@ -6,4 +6,4 @@ const CanalPedido = Object({
   WEB: "WEB",
 });
 
-export default CanalPedido;
+export default OrderChannel;

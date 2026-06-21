@@ -1,12 +1,12 @@
 import ProductRepository from "../../../infrastructure/database/repositories/ProductRepository.js";
 
 class CreateProductUseCase {
-  async execute({ nome, preco, descricao, ativo, estoque }) {
-    if (!nome || nome.trim().length < 3) {
+  async execute({ name, price, description, active, stock }) {
+    if (!name || name.trim().length < 3) {
       throw new Error("NOME_INVALIDO");
     }
 
-    if (preco <= 0) {
+    if (price <= 0) {
       throw new Error("PRECO_INVALIDO");
     }
 
@@ -14,19 +14,19 @@ class CreateProductUseCase {
     //   throw new Error("ATIVO_INVALIDO");
     // }
 
-    if (estoque < 0) {
+    if (stock < 0) {
       throw new Error("ESTOQUE_INVALIDO");
     }
 
-    const produto = await ProductRepository.create({
-      nome,
-      preco,
-      descricao,
-      ativo,
-      estoque,
+    const order = await ProductRepository.create({
+      name,
+      price,
+      description,
+      active,
+      stock,
     });
 
-    return produto;
+    return order;
   }
 }
 

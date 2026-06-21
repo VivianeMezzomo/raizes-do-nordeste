@@ -1,27 +1,27 @@
 import OrderRepository from "../../../infrastructure/database/repositories/OrderRepository.js";
-import PaymentRepository from "../../../infrastructure/database/repositories/PagamentoRepository.js";
+import PaymentRepository from "../../../infrastructure/database/repositories/PaymentRepository.js";
 
 class RegisterPaymentUseCase {
-  async execute({ pedidoId, resultado }) {
-    const pedido = await OrderRepository.findById(pedidoId);
+  async execute({ orderId, result }) {
+    const order = await OrderRepository.findById(orderId);
 
-    if (!pedido) {
+    if (!order) {
       throw new Error("PEDIDO_NAO_ENCONTRADO");
     }
 
-    const pagamento = await PaymentRepository.create({
-      pedidoId,
+    const payment = await PaymentRepository.create({
+      orderId,
       valor: pedido.valorTotal,
-      status: resultado,
+      status: result,
     });
 
-    if (resultado === "APROVADO") {
-      await OrderRepository.updateStatus(pedidoId, "PAGO");
+    if (result === "APROVADO") {
+      await OrderRepository.updateStatus(orderId, "PAGO");
     } else {
-      await OrderRepository.updateStatus(pedidoId, "CANCELADO");
+      await OrderRepository.updateStatus(orderId, "CANCELADO");
     }
 
-    return pagamento;
+    return payment;
   }
 }
 
