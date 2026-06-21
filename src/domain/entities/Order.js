@@ -1,9 +1,9 @@
 import OrderStatus from "../enum/OrderStatus.js";
-import orderChannel from "../enum/OrderChannel.js";
+import OrderChannel from "../enum/OrderChannel.js";
 
 class Order {
-  constructor({ userId, unidadeId, orderChannel, items }) {
-    if (!Object.values(orderChannel).includes(orderChannel)) {
+  constructor({ userId, unitId, orderChannel, items }) {
+    if (!Object.values(OrderChannel).includes(orderChannel)) {
       throw new Error("Canal de pedido inválido");
     }
 

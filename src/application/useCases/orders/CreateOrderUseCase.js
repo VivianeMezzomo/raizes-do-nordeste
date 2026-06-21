@@ -3,39 +3,41 @@ import OrderRepository from "../../../infrastructure/database/repositories/Order
 
 class CreateOrderUseCase {
   async execute({ userId, orderChannel, items }) {
-    let valorTotal = 0;
+    let totalPrice = 0;
 
     const orderItems = [];
 
-    for (const item of items) {
-      const produto = await ProductRepository.findById(item.produtoId);
+    console.log("items", items);
 
-      if (!produto) {
+    for (const item of items) {
+      const product = await ProductRepository.findById(item.productId);
+
+      if (!product) {
         throw new Error("PRODUTO_NAO_ENCONTRADO");
       }
 
-      if (produto.estoque < item.quantidade) {
+      if (product.stock < item.quantity) {
         throw new Error("ESTOQUE_INSUFICIENTE");
       }
 
-      valorTotal += produto.preco * item.quantidade;
+      totalPrice += product.price * item.quantity;
 
       orderItems.push({
-        produtoId: produto._id,
-        quantidade: item.quantidade,
-        precoUnitario: produto.preco,
+        productId: product._id,
+        quantity: item.quantity,
+        unitPrice: product.price,
       });
 
-      produto.estoque -= item.quantidade;
+      product.stock -= item.quantity;
 
-      await produto.save();
+      await product.save();
     }
 
     return OrderRepository.create({
       userId,
       orderChannel,
       items: orderItems,
-      valorTotal,
+      totalPrice,
       status: "PENDENTE",
     });
   }

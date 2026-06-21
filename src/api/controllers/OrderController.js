@@ -6,9 +6,9 @@ class OrderController {
       const useCase = new CreateOrderUseCase();
 
       const order = await useCase.execute({
-        usuarioId: req.user.id,
+        userId: req.user.id,
         orderChannel: req.body.orderChannel,
-        itens: req.body.itens,
+        items: req.body.items,
       });
 
       return res.status(201).json(order);

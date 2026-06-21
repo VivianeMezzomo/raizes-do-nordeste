@@ -77,7 +77,6 @@ class AuthController {
 
       return res.status(200).json(resultado);
     } catch (error) {
-      console.log("error.message", error.message);
       if (error.message === "CREDENCIAIS_INVALIDAS") {
         return res.status(401).json({
           error: "CREDENCIAIS_INVALIDAS",

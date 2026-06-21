@@ -11,7 +11,7 @@ class RegisterPaymentUseCase {
 
     const payment = await PaymentRepository.create({
       orderId,
-      valor: pedido.valorTotal,
+      price: order.totalPrice,
       status: result,
     });
 
