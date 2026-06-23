@@ -4,10 +4,13 @@ import OrderRepository from "../../../infrastructure/database/repositories/Order
 class CreateOrderUseCase {
   async execute({ userId, orderChannel, items }) {
     let totalPrice = 0;
-
     const orderItems = [];
 
     for (const item of items) {
+      if (item.id.length != 24) {
+        throw new Error("ID_INVALIDO");
+      }
+
       const product = await ProductRepository.findById(item.productId);
 
       if (!product) {

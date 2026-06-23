@@ -2,10 +2,14 @@ import OrderRepository from "../../../infrastructure/database/repositories/Order
 
 class GetOrderStatusUseCase {
   async execute(orderId) {
+    if (orderId.length != 24) {
+      throw new Error("ID_INVALIDO");
+    }
+
     const order = await OrderRepository.findById(orderId);
 
     if (!order) {
-      throw new Error("ORDER_NOT_FOUND");
+      throw new Error("PEDIDO_NAO_ENCONTRADO");
     }
 
     return {

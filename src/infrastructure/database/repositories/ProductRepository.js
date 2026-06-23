@@ -9,6 +9,10 @@ class ProductRepository {
     return ProductModel.findById(id);
   }
 
+  async findByName(name) {
+    return ProductModel.findOne({ name });
+  }
+
   async findAll() {
     return ProductModel.find();
   }

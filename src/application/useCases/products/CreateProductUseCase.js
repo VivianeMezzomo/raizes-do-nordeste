@@ -2,6 +2,12 @@ import ProductRepository from "../../../infrastructure/database/repositories/Pro
 
 class CreateProductUseCase {
   async execute({ name, price, description, active, stock }) {
+    const produtoExistente = await ProductRepository.findByName(name);
+
+    if (produtoExistente) {
+      throw new Error("PRODUTO_JA_CADASTRADO");
+    }
+
     if (!name || name.trim().length < 3) {
       throw new Error("NOME_INVALIDO");
     }
@@ -9,10 +15,6 @@ class CreateProductUseCase {
     if (price <= 0) {
       throw new Error("PRECO_INVALIDO");
     }
-
-    // if (ativo !== true || ativo !== false) {
-    //   throw new Error("ATIVO_INVALIDO");
-    // }
 
     if (stock < 0) {
       throw new Error("ESTOQUE_INVALIDO");
