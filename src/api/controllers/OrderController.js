@@ -65,16 +65,15 @@ class OrderController {
     try {
       const { id } = req.params;
 
+      const useCase = new GetOrderStatusUseCase();
+      const order = await useCase.execute(id);
+
       if (
         req.user.role !== "ADMIN" &&
         order.userId.toString() !== req.user.id
       ) {
         throw new Error("ACESSO_NEGADO");
       }
-
-      const useCase = new GetOrderStatusUseCase();
-
-      const order = await useCase.execute(id);
 
       return res.status(200).json(order);
     } catch (error) {

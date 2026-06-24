@@ -7,7 +7,7 @@ class CreateOrderUseCase {
     const orderItems = [];
 
     for (const item of items) {
-      if (item.id.length != 24) {
+      if (item.productId.length != 24) {
         throw new Error("ID_INVALIDO");
       }
 
