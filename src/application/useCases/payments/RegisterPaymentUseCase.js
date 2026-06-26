@@ -21,7 +21,7 @@ class RegisterPaymentUseCase {
     });
 
     if (result === "APROVADO") {
-      await OrderRepository.updateStatus(orderId, "PAGO");
+      await OrderRepository.updateStatus(orderId, "COZINHA");
     } else {
       for (const item of order.items) {
         await ProductRepository.increaseStock(item.productId, item.quantity);
