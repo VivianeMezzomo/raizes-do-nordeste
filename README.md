@@ -102,10 +102,10 @@ Resultados possíveis:
 
 - PENDENTE
 - APROVADO
-- - O status do pedido é atualizado para **COZINHA**
+  - O status do pedido é atualizado para **COZINHA**
 - RECUSADO
-- - O status do pedido é atualizado para **CANCELADO**
-- - O estoque é restaurado
+  - O status do pedido é atualizado para **CANCELADO**
+  - O estoque é restaurado
 
 ---
 
@@ -139,7 +139,7 @@ Exemplos:
 Clone o projeto:
 
 ```bash
-git clone [<url-do-repositorio>](https://github.com/VivianeMezzomo/raizes-do-nordeste.git)
+git clone https://github.com/VivianeMezzomo/raizes-do-nordeste.git
 ```
 
 Entre na pasta:
@@ -163,7 +163,7 @@ Crie um arquivo **.env**
 ```
 PORT=3000
 
-MONGO_URI=mongodb://localhost:27017/banco_mongodb
+MONGO_URI=mongodb+srv://<user>:<passsword>@raizesdonordeste.6uj7u3y.mongodb.net/
 
 JWT_SECRET=chave_secreta
 ```
