@@ -6,27 +6,37 @@ import UserController from "../controllers/UserController.js";
 const router = Router();
 /**
  * @swagger
- * /users/:id/role:
+ * /users/{id}/role:
  *   patch:
  *     summary: Atualiza o perfil de um usuário já existente
  *     tags:
  *       - User
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID do usuário
+ *         schema:
+ *           type: string
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - role
  *             properties:
- *               nome:
+ *               role:
  *                 type: string
- *               email:
- *                 type: string
- *               senha:
- *                 type: string
+ *                 description: Novo perfil do usuário (CLIENTE, ATENDENTE, COZINHA, GERENTE, ADMIN).
  *     responses:
  *       200:
- *         description: Registro realizado com sucesso
+ *         description: Perfil atualizado com sucesso
+ *       400:
+ *          description: Erro ao atualizar o perfil.
+ *       500:
+ *          description: Erro interno no servidor.
  */
 router.patch(
   "/:id/role",

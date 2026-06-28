@@ -16,15 +16,25 @@ const router = Router();
  *           schema:
  *             type: object
  *             properties:
- *               nome:
+ *               name:
  *                 type: string
+ *                 required: true
+ *                 description: Nome do usuário.
  *               email:
  *                 type: string
- *               senha:
+ *                 required: true
+ *                 description: Email do usuário.
+ *               password:
  *                 type: string
+ *                 required: true
+ *                 description: Senha do usuário.
  *     responses:
  *       200:
  *         description: Registro realizado com sucesso
+ *       400:
+ *          description: Erro ao realizar o registro.
+ *       500:
+ *          description: Erro interno no servidor.
  */
 router.post("/register", AuthController.register);
 
@@ -44,11 +54,19 @@ router.post("/register", AuthController.register);
  *             properties:
  *               email:
  *                 type: string
- *               senha:
+ *                 required: true
+ *                 description: Email do usuário.
+ *               password:
  *                 type: string
+ *                 required: true
+ *                 description: Senha do usuário.
  *     responses:
  *       200:
  *         description: Login realizado com sucesso
+ *       400:
+ *          description: Erro ao realizar o login.
+ *       500:
+ *          description: Erro interno no servidor.
  */
 router.post("/login", AuthController.login);
 

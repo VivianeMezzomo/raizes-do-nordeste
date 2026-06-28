@@ -186,7 +186,14 @@ Após iniciar a API:
 http://localhost:3000/api-docs
 ```
 
----
+## Autenticação
+
+Algumas rotas exigem autenticação utilizando Bearer Token (JWT).
+
+1. Execute a rota POST /auth/login utilizando um usuário já cadastrado. Para acessar todas as funcionalidades da API, recomenda-se utilizar um usuário com perfil ADMIN.
+2. Copie o valor do campo accessToken retornado na resposta.
+3. Na interface do Swagger, clique em Authorize e informe o token.
+4. Após autorizar, todas as requisições protegidas poderão ser executadas diretamente pelo Swagger.
 
 # Endpoints
 
