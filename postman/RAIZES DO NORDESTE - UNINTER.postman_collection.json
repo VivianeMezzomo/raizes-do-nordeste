@@ -1,0 +1,571 @@
+{
+	"info": {
+		"_postman_id": "347aebe7-f560-4440-9e00-7e7600e64ccd",
+		"name": "RAIZES DO NORDESTE - UNINTER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32819562"
+	},
+	"item": [
+		{
+			"name": "API HEALTH",
+			"item": [
+				{
+					"name": "HEALTH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "T01 - REGISTER 200",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Walmor\",\r\n  \"email\": \"walmormz@gmail.com\",\r\n  \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "T02 - REGISTER 400",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Wanessa\",\r\n  \"email\": \"wanessamz@gmail\",\r\n  \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "T03 - LOGIN 200",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"viviane@email.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "T04 - LOGIN 400",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"viviane@email.com\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "T05 - FIND ALL 200",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/products/findAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "T06 - CREATE 200",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMmYwZjIyNzdjNzQ3MTAyODU5ZjJhZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MjYwNTgxNCwiZXhwIjoxNzgyNjA5NDE0fQ.fn4zkJMDjfQuB_7vihrdtcKbqPppGEAj0i0RP5dS8uw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Pão de queijo\",\r\n  \"price\": 12.00,\r\n  \"description\": \"\",\r\n  \"active\": true,\r\n  \"stock\": 53\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/products/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "T07 - CREATE 400",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMmYwZjIyNzdjNzQ3MTAyODU5ZjJhZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MjI2MDgzMywiZXhwIjoxNzgyMjY0NDMzfQ.n3OdUV6BOmcZ0lJ7zFIc4nyL0bMoUAt-1QF4fdKGa0I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tapioca\",\r\n  \"price\": 12.00,\r\n  \"description\": \"\",\r\n  \"active\": true,\r\n  \"stock\": 53\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/products/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "T08 - CREATE 200",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMmYwZjIyNzdjNzQ3MTAyODU5ZjJhZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MjI2MDgzMywiZXhwIjoxNzgyMjY0NDMzfQ.n3OdUV6BOmcZ0lJ7zFIc4nyL0bMoUAt-1QF4fdKGa0I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderChannel\": \"WEB\",\r\n  \"items\": [\r\n    {\r\n      \"productId\": \"6a3490bcc1e9bda80a09a4a8\",\r\n      \"quantity\": 5\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/orders/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"orders",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "T09 - CREATE 400",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMmYwZjIyNzdjNzQ3MTAyODU5ZjJhZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MjI2MDgzMywiZXhwIjoxNzgyMjY0NDMzfQ.n3OdUV6BOmcZ0lJ7zFIc4nyL0bMoUAt-1QF4fdKGa0I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderChannel\": \"WEB\",\r\n  \"items\": [\r\n    {\r\n      \"productId\": \"6a3490bcc1e9bda80a09a4a8\",\r\n      \"quantity\": 500\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/orders/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"orders",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "T010 - GET STATUS 200",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMmYwZjIyNzdjNzQ3MTAyODU5ZjJhZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MjI2MjQ1MiwiZXhwIjoxNzgyMjY2MDUyfQ.BAbUYN63G9jpMD-PUh_RxDpU3VyVr2N-ECJd94ztSe8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/orders/6a3b2c7160a00084337f1de7/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"orders",
+								"6a3b2c7160a00084337f1de7",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "T011 - GET STATUS 400",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMmYwZjIyNzdjNzQ3MTAyODU5ZjJhZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MjE3NDg2MSwiZXhwIjoxNzgyMTc4NDYxfQ.fgrR10DbhEw2wmDFVUAqgAczFncbvbOJy4sbKJYxd0c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/orders/6a39d8bea7aa3b013c8a0c4f/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"orders",
+								"6a39d8bea7aa3b013c8a0c4f",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "T12 - SUBMIT 200",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMmYwZjIyNzdjNzQ3MTAyODU5ZjJhZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MjI2MjQ1MiwiZXhwIjoxNzgyMjY2MDUyfQ.BAbUYN63G9jpMD-PUh_RxDpU3VyVr2N-ECJd94ztSe8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"6a3b2c7160a00084337f1de7\",\r\n  \"result\": \"APROVADO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/payments/submit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"payments",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "T13 - SUBMIT 400",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMmYwZjIyNzdjNzQ3MTAyODU5ZjJhZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MjI2MjQ1MiwiZXhwIjoxNzgyMjY2MDUyfQ.BAbUYN63G9jpMD-PUh_RxDpU3VyVr2N-ECJd94ztSe8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"6a3b2c7160a00084337f1de7\",\r\n  \"result\": \"APROVADO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/payments/submit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"payments",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "T14 - UPDATE ROLE 200",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMmYwZjIyNzdjNzQ3MTAyODU5ZjJhZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MjI2MjQ1MiwiZXhwIjoxNzgyMjY2MDUyfQ.BAbUYN63G9jpMD-PUh_RxDpU3VyVr2N-ECJd94ztSe8",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"GERENTE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/6a3891e4d4413e0d73df8fa0/role",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"6a3891e4d4413e0d73df8fa0",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "T15 - UPDATE ROLE 400",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMmYwZjIyNzdjNzQ3MTAyODU5ZjJhZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc4MjI2MjQ1MiwiZXhwIjoxNzgyMjY2MDUyfQ.BAbUYN63G9jpMD-PUh_RxDpU3VyVr2N-ECJd94ztSe8",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"LOJISTA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/6a2f0f2277c747102859f2af/role",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"6a2f0f2277c747102859f2af",
+								"role"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
